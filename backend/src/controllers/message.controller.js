@@ -64,7 +64,7 @@ const sendMessage = async (req, res) => {
       senderId,
       receiverId,
       text,
-      image: imageUrl || null, // Ensure image is null if no image was uploaded
+      image: imageUrl || null, 
     });
 
     const receiverSocketId = getReceiverSocketId(receiverId);

@@ -6,7 +6,7 @@ const {
     signup, 
     updateProfile 
 } = require('../controllers/auth.controller'); 
-const protectRoute = require('../middleware/auth.middleware'); // Correct the import
+const protectRoute = require('../middleware/auth.middleware'); 
 
 const router = express.Router();
 

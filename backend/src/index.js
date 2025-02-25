@@ -3,6 +3,7 @@ const http = require("http");
 const dotenv = require("dotenv");
 const cloudinary = require("cloudinary").v2;
 const authRoutes = require('./routes/auth.route'); 
+const cors = require('cors');
 
 dotenv.config();
 
@@ -14,6 +15,7 @@ cloudinary.config({
   cloudinary_url: process.env.CLOUDINARY_URL,
 });
 
+app.use(cors({credentials: true, origin: ['http://localhost:5174','http://localhost:5173' ] }));
 app.use(express.json()); 
 app.use(express.urlencoded({ extended: true })); 
 
