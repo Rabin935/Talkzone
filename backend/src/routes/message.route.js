@@ -1,6 +1,6 @@
 const express = require('express');
 const protectRoute = require('../middleware/auth.middleware'); 
-const { getMessages, getUsersForSidebar, sendMessage } = require('../controllers/message.controller'); // Ensure this path is correct
+const { getMessages, getUsersForSidebar, sendMessage } = require('../controllers/message.controller'); 
 
 const router = express.Router();
 

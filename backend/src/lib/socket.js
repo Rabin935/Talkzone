@@ -39,9 +39,18 @@ io.on('connection', (socket) => {
   });
 });
 
-const PORT = 3000;
-server.listen(PORT, () => {
-  console.log(`Socket.IO server running on port ${PORT}`);
+// Health check route
+app.get('/health', (req, res) => {
+  res.send('Server is up and running');
 });
+
+const PORT = 3000;
+try {
+  server.listen(PORT, () => {
+    console.log(`Socket.IO server running on port ${PORT}`);
+  });
+} catch (error) {
+  console.error('Error starting server:', error);
+}
 
 module.exports = { io, app, server, getReceiverSocketId };
