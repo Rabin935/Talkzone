@@ -10,11 +10,12 @@ const generateToken = (id, res) => {
       expiresIn: '7d',
     });
 
+    // Set the cookie
     res.cookie('jwt', token, {
-      maxAge: 7 * 24 * 60 * 60 * 1000,
-      httpOnly: true,
-      sameSite: 'strict',
-      secure: process.env.NODE_ENV === 'production',
+      maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
+      httpOnly: true, // Prevents client-side access
+      sameSite: 'strict', // Helps prevent CSRF
+      secure: process.env.NODE_ENV === 'production', 
     });
 
     return token;

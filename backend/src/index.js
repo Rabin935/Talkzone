@@ -4,6 +4,7 @@ const dotenv = require("dotenv");
 const cloudinary = require("cloudinary").v2;
 const authRoutes = require('./routes/auth.route'); 
 const cors = require('cors');
+const cookieParser = require("cookie-parser");
 const { Server } = require("socket.io"); 
 
 dotenv.config();
@@ -25,7 +26,7 @@ cloudinary.config({
 app.use(cors({credentials: true, origin: ['http://localhost:5174','http://localhost:5173' ] }));
 app.use(express.json()); 
 app.use(express.urlencoded({ extended: true })); 
-
+app.use(cookieParser());
 app.use('/api/auth', authRoutes);
 
 // Socket.IO connection handling
