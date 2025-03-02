@@ -1,25 +1,23 @@
 {
-  "$schema": "https://json.schemastore.org/package",
   "name": "chat-app",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "build": "npm install --prefix backend && npm install --prefix frontend && npm run build --prefix frontend",
-    "start:backend": "cd Talkzone_backend && npm start",
-    "start:frontend": "cd Talkzone_frontend && npm start", 
-    "dev": "concurrently \"npm run start:backend\" \"npm run start:frontend\""
+    "start": "concurrently \"npm run start:backend\" \"npm run start:frontend\"",
+    "start:backend": "cd backend && npm run dev",
+    "start:frontend": "cd frontend && npm run dev",
+    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "dev:backend": "cd backend && npm run dev",
+    "dev:frontend": "cd frontend && npm run dev",
+    "serve": "vite preview"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "concurrently": "^9.1.2",
-    "vite": "^6.1.1"
-  },
-  "dependencies": {
-    "cookie-parser": "^1.4.7",
-    "socket.io": "^4.8.1",
-    "socket.io-client": "^4.8.1"
+    "concurrently": "^6.2.1",
+    "vite": "^6.2.0"
   }
 }
