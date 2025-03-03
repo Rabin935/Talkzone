@@ -1,0 +1,22 @@
+{
+  "name": "chat-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "npm install --prefix backend && npm install --prefix frontend && npm run build --prefix frontend",
+    "start": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "cd Talkzone_backend && npm run dev",
+    "client": "cd Talkzone_frontend && npm run dev",
+    "dev": "concurrently \"npm run dev-server\" \"npm run dev-client\"",
+    "dev-server": "cd Talkzone_backend && npm run dev",
+    "dev-client": "cd Talkzone_frontend && npm run dev"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^9.1.2",
+    "vite": "^6.2.0"
+  }
+}
