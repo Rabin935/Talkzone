@@ -4,7 +4,7 @@ import toast from "react-hot-toast";
 import { io } from "socket.io-client";
 import { useNavigate } from "react-router-dom";
 
-const BASE_URL = import.meta.env.MODE === "development" ? "http://localhost:5001" : "/";
+const BASE_URL = import.meta.env.MODE === "development" ? "http://localhost:5000" : "/";
 
 export const useAuthStore = create((set, get) => ({
   user: null,
@@ -18,6 +18,7 @@ export const useAuthStore = create((set, get) => ({
   socket: null,
 
   checkAuth: async () => {
+    const navigate = useNavigate(); // Move useNavigate inside the method
     try {
       const token = get().token;
       const res = await axiosInstance.get("/auth/check", {
@@ -28,7 +29,12 @@ export const useAuthStore = create((set, get) => ({
       set({ user: res.data.user, token: res.data.token });
       get().connectSocket();
     } catch (error) {
-      console.log("Error in checkAuth:", error);
+      if (error.response && error.response.status === 401) {
+        console.log("Unauthorized - Redirecting to login");
+        navigate("/login"); // Use navigate correctly
+      } else {
+        console.log("Error in checkAuth:", error);
+      }
       set({ user: null, token: null });
     } finally {
       set({ isCheckingAuth: false });

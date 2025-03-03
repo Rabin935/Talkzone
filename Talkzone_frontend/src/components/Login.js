@@ -10,6 +10,8 @@ const Login = () => {
     e.preventDefault();
     try {
       const response = await axiosInstance.post('/auth/login', { email, password });
+      const { token } = response.data;
+      localStorage.setItem('token', token); // Store the token in localStorage
       // ...existing code...
     } catch (err) {
       setError(err.response?.data?.message || 'Login failed');

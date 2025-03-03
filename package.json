@@ -9,15 +9,19 @@
     "start:backend": "cd backend && npm run dev",
     "start:frontend": "cd frontend && npm run dev",
     "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
-    "dev:backend": "cd backend && npm run dev",
-    "dev:frontend": "cd frontend && npm run dev",
+    "dev:backend": "cd Talkzone_backend && npm run dev",
+    "dev:frontend": "cd Talkzone_frontend && npm run dev",
     "serve": "vite preview"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "concurrently": "^6.2.1",
+    "concurrently": "^6.5.1",
     "vite": "^6.2.0"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "jsonwebtoken": "^9.0.2"
   }
 }
